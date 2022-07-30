@@ -66,4 +66,4 @@ function TextForm(props) {
     );
 }
 
-export default TextForm
+export default TextForm;
