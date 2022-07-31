@@ -29,38 +29,23 @@ function TextForm(props) {
         setText(event.target.value);
     }
 
-    const wordCount = (text) => {
-        let count = text.trim().split(/\s+/).length;
-        if (count === 1) {
-            if (/[a-zA-Z]/.test(text)) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        }
-        else {
-            return count;
-        }
-    }
-
     return (
         <>
             <div className="container my-3">
                 <h1 style={{ color: props.mode === "dark" ? "white" : "black" }}>{props.heading}</h1>
                 <div className="mb-3">
                     <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"
-                        style={{ color: props.mode === "dark" ? "white" : "black", backgroundColor: props.mode === "dark" ? "grey" : "white" }}></textarea>
+                        style={{ color: props.mode === "dark" ? "white" : "#042743", backgroundColor: props.mode === "dark" ? "#16466e" : "white" }}></textarea>
                 </div>
-                <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert To UpperCase</button>
-                <button className="btn btn-primary mx-1" onClick={handleLowerClick}>Convert To LowerCase</button>
-                <button className="btn btn-primary mx-1" onClick={handleClsClick}>Clear Text</button>
-                <button className="btn btn-primary mx-1" onClick={handleExtraClick}>Remove Extra Spaces</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert To UpperCase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowerClick}>Convert To LowerCase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleClsClick}>Clear Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraClick}>Remove Extra Spaces</button>
             </div>
             <div className="container my-2" style={{ color: props.mode === "dark" ? "white" : "black" }}>
                 <h1>Your Text Summary</h1>
-                <p>{wordCount(text)} Words and {text.length} Characters</p>
-                <p>{0.008 * wordCount(text)} Minutes To Read</p>
+                <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} Words and {text.length} Characters</p>
+                <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes To Read</p>
             </div>
         </>
     );
