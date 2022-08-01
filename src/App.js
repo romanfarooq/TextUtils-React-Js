@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Altert from "./components/Altert";
 import Navbar from "./components/Navbar";
+import Altert from "./components/Altert";
 import TextForm from "./components/TextForm";
 import AboutUs from "./components/AboutUs";
 
